@@ -15,9 +15,9 @@ require_once 'Config/Config.php';
     <h1>Bienvenido al casino de Bender, el que Ofende</h1>
     <nav>
         <ul>
-            <li><a href="http://localhost/php/mvc/brisca_mvc/index.php?controller=MostrarBaraja&action=mostrarBaraja">Mostrar baraja</a></li>
-            <li><a href="">Mostar una carta</a></li>
-            <li><a href="">Barajar el mazo</a></li>
+            <li><a href="<?=BASE_URL?>index.php?controller=Baraja&action=mostrarBaraja">Mostrar baraja</a></li>
+            <li><a href="<?=BASE_URL?>index.php?controller=Baraja&action=barajar">Barajar el mazo</a></li>
+            <li><a href="<?=BASE_URL?>index.php?controller=Carta&action=mostrarCarta">Mostrar una carta</a></li>
             <li><a href="">Sacar la última carta del mazo</a></li>
             <li><a href="">Repartir tres cartas a un jugador</a></li>
             <li><a href="">Repartir diez cartas a un jugador</a></li>
