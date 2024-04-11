@@ -37,10 +37,9 @@ class CartaController {
 
     function sacarUltimaCarta() {
 
-        require_once 'Views\Menu\mazoBarajado.php';
         $baraja = new Baraja();
         // Baraja el mazo de cartas
-        $baraja->barajarMazo();
+        /* $baraja->barajarMazo(); */
         // Obtiene la baraja de rutas de imágenes
         $ultimaCarta = $baraja->extraerCarta();
 
@@ -54,7 +53,6 @@ class CartaController {
 
     function tresCartas() {
         
-        require_once 'Views\Menu\mazoBarajado.php';
         $baraja = new Baraja();
         // Baraja el mazo de cartas
         $baraja->barajarMazo();
