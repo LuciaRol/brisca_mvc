@@ -9,8 +9,8 @@ Class BarajaController {
         require_once 'Views\Menu\mostrarBaraja.php';
         // Crea una instancia de la baraja para obtener las rutas de las imágenes
         $baraja = new Baraja();
-        // Baraja el mazo de cartas
-        $baraja->barajarMazo();
+       
+      
         // Obtiene la baraja de rutas de imágenes
         $imagenes = $baraja->getBaraja();
     
