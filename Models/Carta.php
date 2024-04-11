@@ -4,8 +4,8 @@ namespace Models;
 
 class Carta{
     // Creamos las constantes de los palos y las cartas.
-    const PALOS = ["OROS", "COPAS", "ESPADAS", "BASTOS"];
-    const CARTAS = [1=>"AS", 2=>"2", 3=>"3", 4=>"4", 5=>"5", 6=>"6", 7=>"7", 8=>"8", 9=>"9", 10=>"SOTA", 11=>"CABALLO", 12=>"REY"];
+    const PALOS = ["oros", "copas", "espadas", "bastos"];
+    const CARTAS = [1=>"1", 2=>"2", 3=>"3", 4=>"4", 5=>"5", 6=>"6", 7=>"7", 8=>"8", 9=>"9", 10=>"10", 11=>"11", 12=>"12"];
 
     // Creamos las propiedades de la clase.
     public function __construct(
