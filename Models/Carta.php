@@ -46,6 +46,16 @@ class Carta{
         return array_key_exists(strtoupper($numero), self::CARTAS); 
     }
 
+    public static function generarCartaAleatoria(): Carta {
+        // Generate a random number for the card's number (1 to 12)
+        $numero = rand(1, 12);
+
+        // Choose a random suit from the available suits
+        $palo = self::PALOS[array_rand(self::PALOS)];
+
+        return new Carta($numero, $palo);
+    }
+
     // Comprobamos si existe el palo y esta en el array PALOS
     public static function comprobarPalo($palo) : bool{
         return in_array($palo, self::PALOS);
