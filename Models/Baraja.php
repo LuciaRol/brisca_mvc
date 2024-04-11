@@ -29,7 +29,7 @@ class Baraja {
     public static function calcularTotal($baza) {
         $total = 0;
         $puntos = [
-            "as" => 11,
+            "1" => 11,
             "3" => 10,
             "12" => 4,
             "11" => 3,

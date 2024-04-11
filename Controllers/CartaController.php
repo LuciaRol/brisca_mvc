@@ -48,7 +48,7 @@ class CartaController {
 
         // Include the view for this action
         require_once 'Views/Menu/sacarUltimaCarta.php';
-        echo "<h2>Esta es la opción SACAR ÚLTIMA CARTA DEL MAZO</h2>";
+        echo "<h2>Esta es la opción SACAR ÚLTIMA CARTA DEL MAZO. El mazo está sin barajar</h2>";
     }
 
     function tresCartas() {
