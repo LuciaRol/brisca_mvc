@@ -18,7 +18,7 @@ require_once 'Config/Config.php';
             <li><a href="<?=BASE_URL?>index.php?controller=Baraja&action=mostrarBaraja">Mostrar baraja</a></li>
             <li><a href="<?=BASE_URL?>index.php?controller=Baraja&action=barajar">Barajar el mazo</a></li>
             <li><a href="<?=BASE_URL?>index.php?controller=Carta&action=mostrarCarta">Mostrar una carta</a></li>
-            <li><a href="">Sacar la última carta del mazo</a></li>
+            <li><a href="<?=BASE_URL?>index.php?controller=Carta&action=sacarUltimaCarta">Sacar la última carta del mazo</a></li>
             <li><a href="">Repartir tres cartas a un jugador</a></li>
             <li><a href="">Repartir diez cartas a un jugador</a></li>
             <li><a href="">Elegir numero de jugadores</a></li>
