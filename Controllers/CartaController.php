@@ -3,6 +3,7 @@ namespace Controllers;
 use Controllers\FrontController;
 
 use Models\Carta;
+use Models\Baraja;
 
 class CartaController {
     function mostrarCarta() {
@@ -35,6 +36,15 @@ class CartaController {
     }
 
     function sacarUltimaCarta() {
+
+        require_once 'Views\Menu\mazoBarajado.php';
+        $baraja = new Baraja();
+                // Obtiene la baraja de rutas de imágenes
+        $ultimaCarta = $baraja->extraerCarta();
+
+        // Itera sobre la lista de imágenes y las muestra en la página
+        echo "<img src='$ultimaCarta' alt=''>";
+
         // Include the view for this action
         require_once 'Views/Menu/sacarUltimaCarta.php';
         echo "<h2>Esta es la opción SACAR ÚLTIMA CARTA DEL MAZO</h2>";
