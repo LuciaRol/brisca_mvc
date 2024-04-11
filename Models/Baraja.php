@@ -26,6 +26,25 @@ class Baraja {
 
     }
 
+    public static function calcularTotal($baza) {
+        $total = 0;
+        $puntos = [
+            "as" => 11,
+            "3" => 10,
+            "12" => 4,
+            "11" => 3,
+            "10" => 2,
+            "nada" => 0 // Este caso nunca se usará dado que todas las cartas tienen un valor asignado.
+        ];
+
+        foreach ($baza as $carta) {
+            list($palo, $numero) = explode("_", $carta);
+            $total += $puntos[$numero] ?? $puntos["nada"]; // Aprovecha el operador de fusión de null
+        }
+
+        return $total;
+    }
+
     // getters y setters
     public function getBaraja(): array {
         return $this->baraja;

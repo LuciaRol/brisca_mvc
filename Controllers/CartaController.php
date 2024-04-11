@@ -9,7 +9,7 @@ class CartaController {
     function mostrarCarta() {
         $carta = Carta::generarCartaAleatoria();
 
-        // Construct the image URL based on the card's suit and number
+        // muestra una carta
         $imagen = "./img/{$carta->getPalo()}_{$carta->getNumero()}.jpg";
         echo "<img src='$imagen' alt=''><hr>";
         
@@ -22,7 +22,7 @@ class CartaController {
             }
         }
 
-        // Display images of the remaining cards
+        // Muestra el resto de cartas del mazo
         foreach ($cartasRestantes as $cartaRestante) {
             $imagenRestante = "./img/{$cartaRestante->getPalo()}_{$cartaRestante->getNumero()}.jpg";
             echo "<img src='$imagenRestante' alt=''>";
@@ -76,17 +76,26 @@ class CartaController {
         // Obtiene la baraja de rutas de imágenes
         $imagenes = $baraja->getBaraja();
     
-        // Mostrar las imágenes de las tres primeras cartas
+        // Mostrar las imágenes de las diez cartas y guardar los números de las cartas
+        $numerosCartas = [];
         for ($i = 0; $i < 10; $i++) {
-            echo "<img src='{$imagenes[$i]}' alt=''>";
+            $rutaCarta = $imagenes[$i];
+            $numeroCarta = basename($rutaCarta, '.jpg'); // Obtenemos el número de la carta desde la ruta de la imagen
+            $numerosCartas[] = $numeroCarta; // Guardamos el número de la carta
+            echo "<img src='$rutaCarta' alt=''>";
         }
+
+        // Calcula el total de puntos de las 10 cartas
+        $totalPuntos = Baraja::calcularTotal($numerosCartas);
+        echo "<p>Total de puntos de las 10 cartas: $totalPuntos</p>";
 
         require_once 'Views/Menu/diezCartas.php';
         echo "<h2>Esta es la opción REPARTIR DIEZ CARTAS A UN JUGADOR</h2>";
+    
     }
 
-    function variosJugadores($jugadores) {
-        $num_jugadores = $jugadores;
+    function variosJugadores() {
+        $num_jugadores = 2;
         $baraja = new Baraja();
         // Baraja el mazo de cartas
         $baraja->barajarMazo();
