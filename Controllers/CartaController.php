@@ -86,19 +86,27 @@ class CartaController {
     }
 
     function variosJugadores() {
-        
-        $baraja = new Baraja();
-        // Baraja el mazo de cartas
-        $baraja->barajarMazo();
-        // Obtiene la baraja de rutas de imágenes
-        $imagenes = $baraja->getBaraja();
-    
-        // Mostrar las imágenes de las tres primeras cartas
-        for ($i = 0; $i < 10; $i++) {
-            echo "<img src='{$imagenes[$i]}' alt=''>";
-        }
-
+        echo 
+        '<form action="partida.php" method="post">
+            <label for="opciones">Selecciona una opción:</label>
+            <select id="opciones" name="opciones">
+                <option value="dos">2 jugadores</option>
+                <option value="tres">3 jugadores</option>
+                <option value="cuatro">4 jugadores</option>
+                <option value="cinco">5 jugadores</option>
+                <option value="seis">6 jugadores</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Enviar">
+        </form>';
+       
         require_once 'Views/Menu/variosJugadores.php';
         echo "<h2>OPCIÓN PARA ELEGIR VARIOS JUGADORES</h2>";
+    }
+    
+
+    function partida(){
+        require_once 'Views/Menu/partida.php';
+        echo "<h2>la partida</h2>";
     }
 }
