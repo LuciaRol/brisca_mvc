@@ -67,4 +67,38 @@ class CartaController {
         require_once 'Views/Menu/tresCartas.php';
         echo "<h2>Esta es la opción REPARTIR TRES CARTAS A UN JUGADOR</h2>";
     }
+
+    function diezCartas() {
+        
+        $baraja = new Baraja();
+        // Baraja el mazo de cartas
+        $baraja->barajarMazo();
+        // Obtiene la baraja de rutas de imágenes
+        $imagenes = $baraja->getBaraja();
+    
+        // Mostrar las imágenes de las tres primeras cartas
+        for ($i = 0; $i < 10; $i++) {
+            echo "<img src='{$imagenes[$i]}' alt=''>";
+        }
+
+        require_once 'Views/Menu/diezCartas.php';
+        echo "<h2>Esta es la opción REPARTIR DIEZ CARTAS A UN JUGADOR</h2>";
+    }
+
+    function variosJugadores() {
+        
+        $baraja = new Baraja();
+        // Baraja el mazo de cartas
+        $baraja->barajarMazo();
+        // Obtiene la baraja de rutas de imágenes
+        $imagenes = $baraja->getBaraja();
+    
+        // Mostrar las imágenes de las tres primeras cartas
+        for ($i = 0; $i < 10; $i++) {
+            echo "<img src='{$imagenes[$i]}' alt=''>";
+        }
+
+        require_once 'Views/Menu/variosJugadores.php';
+        echo "<h2>OPCIÓN PARA ELEGIR VARIOS JUGADORES</h2>";
+    }
 }
