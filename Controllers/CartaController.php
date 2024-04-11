@@ -39,7 +39,9 @@ class CartaController {
 
         require_once 'Views\Menu\mazoBarajado.php';
         $baraja = new Baraja();
-                // Obtiene la baraja de rutas de imágenes
+        // Baraja el mazo de cartas
+        $baraja->barajarMazo();
+        // Obtiene la baraja de rutas de imágenes
         $ultimaCarta = $baraja->extraerCarta();
 
         // Itera sobre la lista de imágenes y las muestra en la página
@@ -51,7 +53,19 @@ class CartaController {
     }
 
     function tresCartas() {
-        // Include the view for this action
+        
+        require_once 'Views\Menu\mazoBarajado.php';
+        $baraja = new Baraja();
+        // Baraja el mazo de cartas
+        $baraja->barajarMazo();
+        // Obtiene la baraja de rutas de imágenes
+        $imagenes = $baraja->getBaraja();
+    
+        // Mostrar las imágenes de las tres primeras cartas
+        for ($i = 0; $i < 3; $i++) {
+            echo "<img src='{$imagenes[$i]}' alt=''>";
+        }
+
         require_once 'Views/Menu/tresCartas.php';
         echo "<h2>Esta es la opción REPARTIR TRES CARTAS A UN JUGADOR</h2>";
     }
