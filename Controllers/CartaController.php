@@ -29,7 +29,6 @@ class CartaController {
         }
 
 
-        // Include the view to display the card image
         require_once 'Views/Menu/mostrarCarta.php';
 
         echo "<h2>Esta es la opción Mostrar CARTA, que muestra la carta que se extrae al azar y la baraja sin esa carta</h2>";
@@ -38,15 +37,11 @@ class CartaController {
     function sacarUltimaCarta() {
 
         $baraja = new Baraja();
-        // Baraja el mazo de cartas
         /* $baraja->barajarMazo(); */
-        // Obtiene la baraja de rutas de imágenes
         $ultimaCarta = $baraja->extraerCarta();
 
-        // Itera sobre la lista de imágenes y las muestra en la página
         echo "<img src='$ultimaCarta' alt=''>";
 
-        // Include the view for this action
         require_once 'Views/Menu/sacarUltimaCarta.php';
         echo "<h2>Esta es la opción SACAR ÚLTIMA CARTA DEL MAZO. El mazo está sin barajar</h2>";
     }
@@ -54,9 +49,7 @@ class CartaController {
     function tresCartas() {
         
         $baraja = new Baraja();
-        // Baraja el mazo de cartas
         $baraja->barajarMazo();
-        // Obtiene la baraja de rutas de imágenes
         $imagenes = $baraja->getBaraja();
     
         // Mostrar las imágenes de las tres primeras cartas
@@ -71,9 +64,7 @@ class CartaController {
     function diezCartas() {
         
         $baraja = new Baraja();
-        // Baraja el mazo de cartas
         $baraja->barajarMazo();
-        // Obtiene la baraja de rutas de imágenes
         $imagenes = $baraja->getBaraja();
     
         // Mostrar las imágenes de las diez cartas y guardar los números de las cartas
@@ -97,9 +88,7 @@ class CartaController {
     function variosJugadores() {
         $num_jugadores = 2;
         $baraja = new Baraja();
-        // Baraja el mazo de cartas
         $baraja->barajarMazo();
-        // Obtiene la baraja de rutas de imágenes
         $imagenes = $baraja->getBaraja();
         
         // Dividir el mazo en dos partes, una para cada jugador
@@ -119,7 +108,6 @@ class CartaController {
             echo "<img src='{$jugador2Cartas[$i]}' alt=''>";
         }
     
-        // Aquí podrías continuar con el resto de la lógica de tu juego
     }
     
     

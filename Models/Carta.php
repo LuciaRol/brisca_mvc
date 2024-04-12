@@ -14,7 +14,7 @@ class Carta{
         ){    
     }
 
-   
+    // getters y setters
     public function getNumero(){
         return $this->numero;
     }
@@ -47,12 +47,9 @@ class Carta{
     }
 
     public static function generarCartaAleatoria(): Carta {
-        // Generate a random number for the card's number (1 to 12)
-        $numero = rand(1, 12);
+        $numero = rand(1, 12); // genera numero aleatorio
 
-        // Choose a random suit from the available suits
         $palo = self::PALOS[array_rand(self::PALOS)];
-
         return new Carta($numero, $palo);
     }
 
