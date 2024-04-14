@@ -33,7 +33,9 @@ class BarajaController {
     // función para mostrar el mazo barajado
     function barajar() {
         // Incluir la vista del mazo barajado
-        require_once 'Views\Menu\mazoBarajado.php';
+        //require_once 'Views\Menu\mazoBarajado.php';
+        $pagina = new Pages;
+        $pagina->render('Menu/mazoBarajado');
 
         // Barajar el mazo de cartas
         $baraja = new Baraja();
