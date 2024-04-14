@@ -5,24 +5,27 @@ use Models\Baraja;
 use Lib\Pages;
 Class BarajaController {
 
+    // función para mostrar la baraja por palos
     function mostrarBaraja(){
         /* require_once 'Views\Menu\mostrarBaraja.php'; */
 
         $baraja = new Baraja();
         $imagenes = $baraja->getBaraja(); // Obtiene la baraja con las imágenes
 
-        $pagina = new Pages;
-       // $pagina->render ('Menu/mostrarBaraja', ['imagenes'=> $imagenes]);
-        $pagina->render ('Menu/mazoBarajado');
-
+        echo "<h2>Estas son las imágenes de la baraja</h2>";
         // Itera sobre la lista de imágenes y las muestra en la página
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }
+
+        $pagina = new Pages;
+        $pagina->render ('Menu/mostrarBaraja', ['imagen'=> $imagen]);
         
-        echo "<h2>Estas son las imágenes de la baraja</h2>";
+        
+        
     }
 
+    // función para mostrar el mazo barajado
     function barajar(){
         
         require_once 'Views\Menu\mazoBarajado.php';
