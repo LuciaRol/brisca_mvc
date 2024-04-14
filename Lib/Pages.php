@@ -10,9 +10,7 @@ class Pages {
             }
         }
         require_once "Views/header.php";
-        require_once "Views/$pageName.php";
-        
-        
+        require_once "Views/$pageName.php"; 
         
     }
 }
