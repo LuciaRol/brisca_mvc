@@ -190,7 +190,7 @@ class CartaController {
     
         // Renderizar la vista mostrarBaraja
         $pagina->render('Menu/mostrarBaraja');
-        
+    
         echo "<h3>Baraja completa:</h3>";
     
         $num_jugadores = 2;
@@ -210,22 +210,30 @@ class CartaController {
             $jugadoresCartas[] = array_slice($imagenes, $i * $mitadMazo, $mitadMazo);
         }
     
-        // Mostrar las imágenes de las primeras tres cartas para cada jugador
+        // Mostrar las imágenes de las primeras tres cartas para cada jugador y calcular la puntuación
         for ($j = 0; $j < $num_jugadores; $j++) {
             echo "<h2>Jugador " . ($j + 1) . "</h2>";
+            $cartasJugador = [];
             for ($i = 0; $i < 3; $i++) {
-                echo "<img src='{$jugadoresCartas[$j][$i]}' alt=''>";
+                $carta = $jugadoresCartas[$j][$i];
+                echo "<img src='$carta' alt=''>";
+                $cartasJugador[] = $carta;
             }
+            // Calcular la puntuación del jugador
+            $puntuacion = Baraja::calcularTotal($cartasJugador);
+            echo "<p>Puntuación del jugador " . ($j + 1) . ": $puntuacion</p>";
         }
     
         // Mostrar las imágenes restantes de la baraja
         echo "<h3>Cartas restantes en el mazo:</h3>";
-        $cartainicio = $num_jugadores * 3; 
-        for ($i = $cartainicio; $i < count($imagenes); $i++) {
+        $cartaInicio = $num_jugadores * 3; 
+        for ($i = $cartaInicio; $i < count($imagenes); $i++) {
             $rutaCarta = $imagenes[$i];
             echo "<img src='$rutaCarta' alt=''>";
         }
-    
     }
+    
+    
+    
     
 }
