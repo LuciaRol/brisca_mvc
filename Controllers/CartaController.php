@@ -20,7 +20,7 @@ class CartaController {
         // muestra una carta
         echo "<h2 class='title'>Se saca una carta al azar del mazo y se muestra el mazo sin esa carta</h2><br/>";
         $imagen = "./img/{$carta->getPalo()}_{$carta->getNumero()}.jpg";
-        echo "<img src='$imagen' alt=''><br/>";
+        echo "<img src='$imagen' alt=''><br/><br/><br/>";
         
         $cartasRestantes = [];
         foreach (Carta::PALOS as $palo) {
