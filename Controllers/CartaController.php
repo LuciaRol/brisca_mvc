@@ -5,6 +5,7 @@ use Controllers\FrontController;
 use Models\Carta;
 use Models\Baraja;
 use Lib\Pages;
+use Views\Menu\variosJugadores;
 
 
 class CartaController {
@@ -186,42 +187,66 @@ class CartaController {
     
 
     function variosJugadores() {
-        $pagina = new Pages;
+       
+        // Si el formulario se hace submit, sale el número
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Se asegura que el numero de jugadores esté en el rango
+            $num_jugadores = max(2, min(6, $_POST['num_jugadores']));
+        } else {
+            // si no se especifica número, el default son 4
+            $num_jugadores = 4;
+        }
     
-        // Renderizar la vista mostrarBaraja
+        $pagina = new Pages;
+
+        // Render the baraja view
         $pagina->render('Menu/mostrarBaraja');
     
-        echo "<h3>Baraja completa:</h3>";
+        // Form para poner el numero de jugadores
+        echo "
+        <h3>Enter the number of players:</h3>
+        <form method='post' action=''>
+            <input type='number' name='num_jugadores' min='2' max='6' value='$num_jugadores'>
+            <input type='submit' value='Enviar'>
+        </form>
+        ";
     
-        $num_jugadores = 2;
+        
+        
+        echo "<h3>Baraja completa:</h3>";
+        
         $baraja = new Baraja();
         $baraja->barajarMazo();
         $imagenes = $baraja->getBaraja();
-    
-        // Mostrar la baraja completa
+        
+        // Se muestra toda la baraja
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }
-    
-        // Dividir el mazo en partes iguales para cada jugador
-        $mitadMazo = count($imagenes) / $num_jugadores;
+        
+        // Se divide el mazo
+        $partesMazo = count($imagenes) / $num_jugadores;
         $jugadoresCartas = [];
         for ($i = 0; $i < $num_jugadores; $i++) {
-            $jugadoresCartas[] = array_slice($imagenes, $i * $mitadMazo, $mitadMazo);
+            $jugadoresCartas[] = array_slice($imagenes, $i * $partesMazo, $partesMazo);
         }
-    
-        // Mostrar las imágenes de las primeras tres cartas para cada jugador y calcular la puntuación
+        
+        // Cada jugador tiene sus cartas y el valor de sus 3 cartas
         for ($j = 0; $j < $num_jugadores; $j++) {
             echo "<h2>Jugador " . ($j + 1) . "</h2>";
             $cartasJugador = [];
             for ($i = 0; $i < 3; $i++) {
                 $carta = $jugadoresCartas[$j][$i];
                 echo "<img src='$carta' alt=''>";
-                $cartasJugador[] = $carta;
+                $numeroCarta = basename($carta, '.jpg');
+                $cartasJugador[] = $numeroCarta; //guardamos el número de la carta para la puntuacion
+                
+
+
             }
-            // Calcular la puntuación del jugador
+            // Se calcula la puntuación con el número de cada carta
             $puntuacion = Baraja::calcularTotal($cartasJugador);
-            echo "<p>Puntuación del jugador " . ($j + 1) . ": $puntuacion</p>";
+            echo "<p>Jugador " . ($j + 1) . " puntuación: $puntuacion</p>";
         }
     
         // Mostrar las imágenes restantes de la baraja
@@ -232,6 +257,7 @@ class CartaController {
             echo "<img src='$rutaCarta' alt=''>";
         }
     }
+    
     
     
     
