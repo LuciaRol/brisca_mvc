@@ -7,7 +7,7 @@ use Lib\Pages;
 
 class BarajaController {
 
-    // función para mostrar la baraja por palos
+    // MÉTODO QUE LLEVA A LA VISTA QUE MUESTRA LA BARAJA
     function mostrarBaraja() {
         // Crear una instancia de la clase Pages
         $pagina = new Pages;
@@ -24,13 +24,13 @@ class BarajaController {
         $imagenes = $baraja->getBaraja(); 
 
         // Mostrar las imágenes en la página
-        echo "<h2>Estas son las imágenes de la baraja</h2>";
+        echo "<h2>Baraja completa ordenada</h2>";
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }
     }
 
-    // función para mostrar el mazo barajado
+    // MÉTODO QUE LLEVA A LA VISTA DEL MAZO BARAJADO
     function barajar() {
         // Incluir la vista del mazo barajado
         //require_once 'Views\Menu\mazoBarajado.php';
@@ -45,11 +45,10 @@ class BarajaController {
         $imagenes = $baraja->getBaraja();
     
         // Mostrar las imágenes del mazo barajado
+        echo "<h2>Mazo completo barajado</h2>";
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }
-        
-        // Mostrar mensaje
-        echo "<h2>Esta es la opción BARAJAR EL MAZO, que muestra el mazo completo barajado</h2>";
+    
     }
 }
