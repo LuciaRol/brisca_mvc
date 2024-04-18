@@ -24,7 +24,7 @@ class BarajaController {
         $imagenes = $baraja->getBaraja(); 
 
         // Mostrar las imágenes en la página
-        echo "<h2>Baraja completa ordenada</h2>";
+        echo "<h2 class='title'>Baraja completa ordenada</h2>";
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }
@@ -45,7 +45,7 @@ class BarajaController {
         $imagenes = $baraja->getBaraja();
     
         // Mostrar las imágenes del mazo barajado
-        echo "<h2>Mazo completo barajado</h2>";
+        echo "<h2 class='title'>Mazo completo barajado</h2>";
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }

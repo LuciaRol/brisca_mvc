@@ -1,13 +1,18 @@
 <?php 
 namespace Controllers;
 use Controllers\FrontController;
+use Lib\Pages;
 
 
-Class DashboardController {
+
+
+class DashboardController {
 
     function mostrarDashboard(){
-        require_once 'Views\header.php';
-        echo "<h2>Este es el Dashboard, que aún está chusco</h2>";
-        echo '<iframe width="560" height="315" src="https://www.youtube.com/watch?v=cGUP-6mxHhA" frameborder="0" allowfullscreen></iframe>';
+        $pagina = new Pages;
+        $pagina->render('header');
+        echo "<div style='text-align: center; margin-top: 2rem;'>"; 
+            echo "<img class='img-index' width='820' height='480' src='./img/otros/bender.jpg'></img>";
+        echo "</div>"; 
     }
 }

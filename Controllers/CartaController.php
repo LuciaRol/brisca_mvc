@@ -18,7 +18,7 @@ class CartaController {
         $carta = Carta::generarCartaAleatoria();
 
         // muestra una carta
-        echo "<h2>Se saca una carta al azar del mazo y se muestra el mazo sin esa carta.</h2>";
+        echo "<h2 class='title'>Se saca una carta al azar del mazo y se muestra el mazo sin esa carta</h2><br/>";
         $imagen = "./img/{$carta->getPalo()}_{$carta->getNumero()}.jpg";
         echo "<img src='$imagen' alt=''><br/>";
         
@@ -49,6 +49,7 @@ class CartaController {
         // No es necesario barajar el mazo si solo queremos sacar la última carta con la baraja ordenada
         $baraja->barajarMazo(); 
         
+        echo "<h2 class='title'>Se saca la última carta al del mazo y se muestra el mazo sin esa carta</h2><br/>";
         $imagenes = $baraja->getBaraja();
         // Mostrar la baraja completa
         echo "<h2>Mazo completo barajado:</h2>";
@@ -57,10 +58,7 @@ class CartaController {
         }
 
         echo "<h2>Última carta del mazo:</h2><br>";
-
         $ultimaCarta = $baraja->extraerCarta();
-        
-
         
         // Mostrar la última carta extraída
         echo "<img src='$ultimaCarta' alt=''><br/>";
@@ -82,7 +80,7 @@ class CartaController {
         $pagina = new Pages;
         $pagina->render('Menu/tresCartas');
         
-        echo "<h2>Baza de tres cartas a un único jugador</h2>";
+        echo "<h2 class='title'>Baza de tres cartas a un único jugador</h2><br/>";
 
         $baraja = new Baraja();
         $baraja->barajarMazo();
@@ -94,7 +92,7 @@ class CartaController {
             echo "<img src='$imagen' alt=''>";
         }
 
-        echo "<h2>Baza de tres cartas</h2><br>";
+        echo "<h2>Baza de tres cartas:</h2><br>";
     
         // Mostrar las imágenes de las tres cartas y guardar los números de las cartas
         $numerosCartas = [];
@@ -102,12 +100,12 @@ class CartaController {
             $rutaCarta = $imagenes[$i];
             $numeroCarta = basename($rutaCarta, '.jpg'); // Obtenemos el número de la carta desde la ruta de la imagen
             $numerosCartas[] = $numeroCarta; // Guardamos el número de la carta
-            echo "<img src='$rutaCarta' alt=''>";
+            echo "<img class='baza' src='$rutaCarta' alt=''>";
         }
     
         // Calcula el total de puntos de las 3 cartas
         $totalPuntos = Baraja::calcularTotal($numerosCartas);
-        echo "<p>Total de puntos de las cartas: $totalPuntos</p>";
+        echo "<h2>Total de puntos de las cartas: $totalPuntos</h2><br/>";
     
         // Mostrar el resto de las cartas del mazo
         echo "<h2>Cartas restantes en el mazo:</h2>";
@@ -123,14 +121,14 @@ class CartaController {
         $pagina = new Pages;
         $pagina->render('Menu/diezCartas');
         
-        echo "<h2>Baza de diez cartas a un único jugador</h2>";
+        echo "<h2 class='title'>Baza de diez cartas a un único jugador</h2><br/>";
 
         $baraja = new Baraja();
         $baraja->barajarMazo();
         $imagenes = $baraja->getBaraja();
 
         // Mostrar la baraja completa
-        echo "<h3>Baraja completa:</h3>";
+        echo "<h2>Baraja completa:</h2>";
         foreach ($imagenes as $imagen) {
             echo "<img src='$imagen' alt=''>";
         }
@@ -148,7 +146,7 @@ class CartaController {
     
         // Calcula el total de puntos de las 10 cartas
         $totalPuntos = Baraja::calcularTotal($numerosCartas);
-        echo "<h2>Total de puntos de las 10 cartas: $totalPuntos</h2>";
+        echo "<h2>Total de puntos de las 10 cartas: $totalPuntos</h2><br/>";
     
         // Mostrar el resto de las cartas del mazo
         echo "<h2>Cartas restantes en el mazo:</h2>";
@@ -175,14 +173,15 @@ class CartaController {
     
         // Formulario para poner el número de jugadores
         echo "
-        <h2>Introduce el número de jugadores:</h2>
-        <form method='post' action=''>
-            <input type='number' name='num_jugadores' min='2' max='6' value='$num_jugadores'>
-            <input type='submit' value='Enviar'>
-        </form>
+        
+        <div class='container'>
+            <h2 class='title'>Introduce el número de jugadores:</h2>
+            <form method='post' action=''>
+                <input type='number' name='num_jugadores' min='2' max='6' value='$num_jugadores'>
+                <input type='submit' value='Enviar'>
+            </form>
+        </div>
         ";
-    
-        echo "<h3>Baraja completa:</h3>";
         
         $baraja = new Baraja();
         $baraja->barajarMazo();
@@ -214,7 +213,7 @@ class CartaController {
             }
             // Se calcula la puntuación con el número de cada carta
             $puntuacion = Baraja::calcularTotal($cartasJugador);
-            echo "<h2>Puntuación jugador " . ($j + 1) . ": $puntuacion</h2>";
+            echo "<h2>Puntuación jugador " . ($j + 1) . ": $puntuacion</h2><br/>";
         }
     
         // Mostrar las imágenes restantes de la baraja
